@@ -67,3 +67,15 @@ document.querySelector("#slider").addEventListener("input", function() {
 	document.querySelector("#volume").textContent = this.value + "%";
 	
 });
+
+document.querySelector("#vintage").addEventListener("click", function() {
+	video.classList.add("oldSchool");
+	console.log("Old School styling activated");
+	
+});
+
+document.querySelector("#orig").addEventListener("click", function() {
+	video.classList.remove("oldSchool");
+	console.log("Original styling activated");
+	
+});
