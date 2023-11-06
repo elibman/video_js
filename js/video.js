@@ -5,7 +5,7 @@ window.addEventListener("load", function() {
 	//initialize
 	video.autoplay = false;
 	video.pause();
-	video.loop = fasle;
+	video.loop = false;
 
 });
 
@@ -25,6 +25,45 @@ document.querySelector("#pause").addEventListener("click", function() {
 //slow down
 document.querySelector("#slower").addEventListener("click", function() {
 	console.log("Slow Down");
-	video.slow();
+	video.playbackRate *= .9;
+	console.log('Playback speed is', video.playbackRate);
+	
+});
+
+document.querySelector("#faster").addEventListener("click", function() {
+	console.log("Speed Up");
+	video.playbackRate *= 1.1;
+	console.log('Playback speed is', video.playbackRate);
+	
+});
+
+document.querySelector("#skip").addEventListener("click", function() {
+	console.log("Skip Ahead");
+	
+	if (video.currentTime > 67) {
+		video.currentTime = 0
+	}
+	else {
+		video.currentTime += 10;
+	}
+	console.log('The current time is', video.currentTime);
+	
+});
+
+document.querySelector("#mute").addEventListener("click", function() {
+	if (video.muted) {
+		video.muted = false;
+	}
+	else {
+		video.muted = true;
+		console.log('Muted')
+	}
+	console.log('Mute status is', video.muted);
+	
+});
+
+document.querySelector("#slider").addEventListener("input", function() {
+	video.volume = this.value/100;
+	document.querySelector("#volume").textContent = this.value + "%";
 	
 });
