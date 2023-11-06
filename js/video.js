@@ -13,6 +13,8 @@ window.addEventListener("load", function() {
 document.querySelector("#play").addEventListener("click", function() {
 	console.log("Play Video");
 	video.play();
+	video.volume = 1; // Set initial video volume to 100%
+    document.querySelector("#volume").textContent = video.volume * 100 + "%"; // Update volume display
 	
 });
 //pause button
@@ -51,11 +53,14 @@ document.querySelector("#skip").addEventListener("click", function() {
 });
 
 document.querySelector("#mute").addEventListener("click", function() {
+	let muteButton = document.querySelector("#mute");
 	if (video.muted) {
 		video.muted = false;
+		muteButton.textContent = "Mute";
 	}
 	else {
 		video.muted = true;
+		muteButton.textContent = "Unmute";
 		console.log('Muted')
 	}
 	console.log('Mute status is', video.muted);
@@ -68,14 +73,16 @@ document.querySelector("#slider").addEventListener("input", function() {
 	
 });
 
+const videoElement = document.querySelector('.video');
+
 document.querySelector("#vintage").addEventListener("click", function() {
-	video.classList.add("oldSchool");
+	videoElement.classList.add("oldSchool");
 	console.log("Old School styling activated");
 	
 });
 
 document.querySelector("#orig").addEventListener("click", function() {
-	video.classList.remove("oldSchool");
+	videoElement.classList.remove("oldSchool");
 	console.log("Original styling activated");
 	
 });
